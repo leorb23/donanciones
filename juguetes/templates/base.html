@@ -1,0 +1,21 @@
+<!DOCTYPE HTML PUBLIC "//W3C//DTD HTML 4.01//EN">
+{% load static %}
+<html lang="es">
+	<head>
+		<meta charset="utf-8" /> 
+		<title>Donar - {% block title %}{% endblock %}</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/estilo.css'%}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%}">
+		<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+	</head>
+	<body>
+
+		{% include 'header.html' %}
+
+		<div class="contenido">{% block contenido %}{% endblock %}
+</div>
+
+		{% include 'footer.html' %}
+
+	</body>
+</html>

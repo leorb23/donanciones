@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Juguete - Nuevo{% endblock %}
+{% block contenido %}
+<div>
+
+	<div class="titulo">
+		<p >Juguete - Nuevo</p>
+	</div>
+
+	<p class="msj">{{msj}}</p>
+	
+	<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+		<p>Descripción:</p>
+		<p><input type="text" name="descripcion" required="true"></p>
+		<p>Estado:</p>
+		<p>
+			<select name="estado" required="true">
+				<option value="">Elegir...</option>
+				{% if estados %}
+				{% for estado in estados %}
+				<option value="{{estado.id}}">{{estado}}</option>
+				{% endfor %}
+				{% endif %}
+			</select>
+		</p>
+		<p>Imagen:</p>
+		<p><input type="file" name="imagen"></p>
+		<hr>
+		<p>
+			<input type="submit" value="Guardar">
+			<input type="reset" value="Cancelar">
+		</p>
+	</form>
+
+</div>
+{% endblock %}

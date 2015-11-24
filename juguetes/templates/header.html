@@ -1,0 +1,44 @@
+<header>
+	<div class="social">
+		{% if user.is_authenticated %}
+		<label>{{user}}</label>
+		<a href="/log_out/">Cerrar Sesión</a>
+		{% else %}
+		<a href="/log_in/">Iniciar Sesión</a>
+		{% endif %}
+	</div>
+
+	<div class="header">
+		<div class="header-part nav">
+			<nav>
+				<ul>
+					<li>
+						<a href="/">Inicio</a>
+					</li>
+					{% if not user.is_authenticated %}
+					<li>
+						<a href="/donacion/">Donación</a>
+					</li>
+					{% elif user.is_authenticated and not user.is_superuser %}
+					<li>
+						<a href="/donacion/">Donación</a>
+					</li>
+					{% elif user.is_authenticated and user.is_superuser %}
+					<li>
+						<a href="/donacion/listado">Donaciones</a>
+					</li>
+					<li>
+						<a href="/donante/listado">Donantes</a>
+					</li>
+					<li>
+						<a href="/estado/listado">Estados Juguete</a>
+					</li>
+					<li>
+						<a href="/juguete/listado">Juguetes</a>
+					</li>
+					{% endif %}
+				</ul>
+			</nav>
+		</div>
+	</div>
+</header>

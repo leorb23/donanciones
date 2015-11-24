@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Estado - Nuevo{% endblock %}
+{% block contenido %}
+<div>
+
+	<div class="titulo">
+		<p >Estado - Nuevo</p>
+	</div>
+
+	<p class="msj">{{msj}}</p>
+
+	<form action="" method="POST">{% csrf_token %}
+		<p>Descripción:</p>
+		<p><input type="text" name="descripcion" required="true"></p>
+		<hr>
+		<p>
+			<input type="submit" value="Guardar">
+			<input type="reset" value="Cancelar">
+		</p>
+	</form>
+
+</div>
+{% endblock %}

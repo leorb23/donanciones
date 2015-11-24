@@ -1,0 +1,11 @@
+
+<div id="dlg-elm" class="none">
+	<form action="eliminar" method="POST">{% csrf_token %}
+		<p>¿Esta seguro que desea eliminar este elemento?</p>
+		<hr>
+		<p>
+			<input type="submit" value="Aceptar">
+			<input type="button" id="btn-cls" value="Cancelar">
+		</p>
+	</form>
+</div>

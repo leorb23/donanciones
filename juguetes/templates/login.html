@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+{% block contenido %}
+<div>
+
+	<div class="titulo">
+		<p >Login</p>
+	</div>
+
+	{% if user.is_authenticated %}
+	<p>Bienvenido {{user}}</p>
+	<a href="/log_out/">Cerrar Sesión</a>
+	{% else %}
+	<div class="log_in">
+		<center>
+			<a href="{% url 'social:begin' 'facebook' %}"><i class="icon-facebook2"> Facebook</i></a>
+			<a href="{% url 'social:begin' 'twitter' %}"><i class="icon-twitter2"> Twitter</i></a>
+		</center>
+	</div>
+	{% endif %}
+
+</div>
+{% endblock %}

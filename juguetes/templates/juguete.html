@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}Juguete{% endblock %}
+{% block contenido %}
+<div>
+
+	<div class="titulo">
+		<p >Juguete - <a href="#dlg-elm" id="lnk-elm"><i class="icon-bin2"></i></a></p>
+	</div>
+
+	<p class="msj">{{msj}}</p>
+
+	<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+		<p>Descripción:</p>
+		<p><input type="text" name="descripcion" required="true" value="{{objeto.descripcion}}"></p>
+		<p>Estado:</p>
+		<p>
+			<select name="estado" required="true">
+				<option value="">Elegir...</option>
+				{% if estados %}
+				{% for estado in estados %}
+				{% ifequal estado.id objeto.estado.id %}
+				<option value="{{estado.id}}" selected>{{estado}}</option>
+				{% else %}
+				<option value="{{estado.id}}">{{estado}}</option>
+				{% endifequal %}
+				{% endfor %}
+				{% endif %}
+			</select>
+		</p>
+		<p>Imagen:</p>
+		{% if objeto.imagen %}
+		<p >
+			<center>
+				<div class="img-field"><img src="{{objeto.imagen.url}}"></div>
+			</center>
+		</p>
+		{% endif %}
+		<p><input type="file" name="imagen"></p>
+		<hr>
+		<p>
+			<input type="submit" value="Modificar">
+			<input type="reset" value="Cancelar">
+		</p>
+	</form>
+
+	{% include 'dlg-eliminar.html' %}
+
+</div>
+{% endblock %}

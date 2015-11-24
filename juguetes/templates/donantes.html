@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}Donantes{% endblock %}
+{% block contenido %}
+<div>
+
+	<div class="titulo">
+		<p >Donantes</p>
+	</div>
+
+	<table>
+		<tr>
+			<td>Nombres</td>
+			<td>Apellidos</td>
+			<td>Identificación</td>
+			<td>Opciones</td>
+		</tr>
+		{% if lista %}
+		{% for objeto in lista %}
+		<tr>
+			<td>{{objeto.nombres}}</td>
+			<td>{{objeto.apellidos}}</td>
+			<td>{{objeto.identificacion}}</td>
+			<td><center><a href="{{objeto.id}}/"><i class="icon-pen"></i></a></center></td>
+		</tr>
+		{% endfor %}
+		{% else %}
+		<tr>
+			<td colspan="4">No existe registros</td>
+		</tr>
+		{% endif %}
+	</table>
+
+	<center>
+		<a href="./nuevo" class="new">Nuevo</a>
+	</center>
+
+</div>
+{% endblock %}

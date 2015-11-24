@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Juguetes{% endblock %}
+{% block contenido %}
+<div>
+
+	<div class="titulo">
+		<p >Juguetes</p>
+	</div>
+
+	<table>
+		<tr>
+			<td>Descripción</td>
+			<td>Estado</td>
+			<td>Opciones</td>
+		</tr>
+		{% if lista %}
+		{% for objeto in lista %}
+		<tr>
+			<td>{{objeto.descripcion}}</td>
+			<td>{{objeto.estado}}</td>
+			<td><center><a href="{{objeto.id}}/"><i class="icon-pen"></i></a></center></td>
+		</tr>
+		{% endfor %}
+		{% else %}
+		<tr >
+			<td colspan="3">No existe registros</td>
+		</tr>
+		{% endif %}
+	</table>
+
+	<center>
+		<a href="./nuevo" class="new">Nuevo</a>
+	</center>
+
+</div>
+{% endblock %}

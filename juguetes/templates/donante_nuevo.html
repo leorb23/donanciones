@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Donante - Nuevo{% endblock %}
+{% block contenido %}
+<div>
+
+	<div class="titulo">
+		<p >Donante - Nuevo</p>
+	</div>
+
+	<p class="msj">{{msj}}</p>
+
+	<form action="" method="POST">{% csrf_token %}
+		<p>Nombres:</p>
+		<p><input type="text" name="nombres" required="true"></p>
+		<p>Apellidos:</p>
+		<p><input type="text" name="apellidos" required="true"></p>
+		<p>Identificación:</p>
+		<p><input type="text" name="identificacion" required="true"></p>
+		<hr>
+		<p>
+			<input type="submit" value="Guardar">
+			<input type="reset" value="Cancelar">
+		</p>
+	</form>
+
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Donación{% endblock %}
+{% block contenido %}
+<div>
+
+	<div class="titulo">
+		<p >Donación</p>
+	</div>
+
+	<div class="text">
+	{% if user.is_authenticated %}
+	<p>Bienvenido {{user}}, para poder realizar una nueva donación ingresa en el siguiente enlace <strong><a href="/donacion/nuevo">Nueva</a></strong>.</p>
+	{% else %}
+	<p>Bienvenido, para poder realizar alguna donación necesitas ingresar al sistema <strong><a href="/log_in/">Iniciar Sesión</a></strong>.</p>
+	{% endif %}
+	</div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %}Donación{% endblock %}
+{% block contenido %}
+<div>
+
+	<div class="titulo">
+		<p >Donación - <a href="#dlg-elm" id="lnk-elm"><i class="icon-bin2"></i></a></p>
+	</div>
+
+	<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+		<h1>Datos Juguete</h1>
+		<p>Descripción:</p>
+		<p><input type="text" name="descripcion" required="true" value="{{objeto.juguete.descripcion}}"></p>
+		<p>Estado:</p>
+		<p>
+			<select name="estado" required="true">
+				<option value="">Elegir...</option>
+				{% if estados %}
+				{% for estado in estados %}
+				{% ifequal estado.id objeto.juguete.estado.id %}
+				<option value="{{estado.id}}" selected>{{estado}}</option>
+				{% else %}
+				<option value="{{estado.id}}">{{estado}}</option>
+				{% endifequal %}
+				{% endfor %}
+				{% endif %}
+			</select>
+		</p>
+		<p>Imagen:</p>
+		{% if objeto.juguete.imagen %}
+		<p >
+			<center>
+				<div class="img-field"><img src="{{objeto.juguete.imagen.url}}"></div>
+			</center>
+		</p>
+		{% endif %}
+		<p><input type="file" name="imagen"></p>
+		<hr>
+		<h1>Datos Donante</h1>
+		<p>Nombres:</p>
+		<p><input type="text" name="nombres" required="true" value="{{objeto.donante.nombres}}"></p>
+		<p>Apellidos:</p>
+		<p><input type="text" name="apellidos" required="true" value="{{objeto.donante.apellidos}}"></p>
+		<p>Identificación:</p>
+		<p><input type="text" name="identificacion" required="true" value="{{objeto.donante.identificacion}}"></p>
+		<hr>
+		<p>
+			<input type="submit" value="Modificar">
+			<input type="reset" value="Cancelar">
+		</p>
+	</form>
+
+	{% include 'dlg-eliminar.html' %}
+
+</div>
+{% endblock %}
